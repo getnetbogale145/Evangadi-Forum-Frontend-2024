@@ -1,0 +1,124 @@
+.homepage_container {
+  margin: 70px 0;
+}
+.quest_user_container {
+  max-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0px auto 35px;
+}
+
+.card_wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.quest_user_container button a {
+  cursor: pointer;
+}
+
+.quest_user_container div span {
+  color: #fe8303;
+  color: #0339fe;
+  font-weight: 800;
+}
+
+.quest_user_container button {
+  background-color: #516cf0;
+  padding: 12px 36px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.quest_user_container button:hover {
+  background-color: orange;
+}
+
+.quest_user_container button a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.homepage_search {
+  max-width: 1000px;
+  margin: 5px auto;
+}
+
+.homepage_search input {
+  border: 2px solid #516cf0;
+  padding: 10px;
+  border-radius: 6px;
+  width: 40%;
+}
+
+.homepage_search input:focus-within {
+  outline: none;
+  border: 2px solid #fe8303 !important;
+}
+
+.questions {
+  font-size: 20px;
+  font-weight: 500;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #ccc;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pagination {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+}
+
+.pagination button {
+  margin-right: 10px;
+  border: #516cf0 2px solid;
+  background-color: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #516cf0;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.perpagetext {
+  display: block;
+  color: #0b32f4;
+  font-size: 13px;
+}
+
+@media (max-width: 320px) {
+  .quest_user_container button {
+    padding: 8px 16px;
+  }
+
+  .quest_user_container {
+    gap: 35px;
+  }
+}
+
+@media (max-width: 360px) {
+  .pagination {
+    flex-direction: column;
+    height: 80px;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 1000px) {
+  .quest_user_container,
+  .card_wrapper {
+    padding: 0 30px;
+  }
+
+  .questions {
+    margin: 0 20px;
+  }
+}
