@@ -1,12 +1,3 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap'); */
-
-.auth_outer_container {
-  /* background-image: url(../../assets//Image/BackPic.svg); */
-  /* background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-color: #f8f8f8; */
-}
 
 .auth_inner_container {
   display: grid;

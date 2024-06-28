@@ -11,8 +11,6 @@ import NotFound from "./Pages/NotFound/NotFound";
 import Updatepass from "./Components/Authentication/UpdatePass";
 
 
-
-// const baseUrl = `http://localhost:1234/api`
 export const AppState = createContext();
 
 function Gateway() {

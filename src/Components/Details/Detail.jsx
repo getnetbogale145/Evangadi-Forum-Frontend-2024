@@ -29,24 +29,19 @@ const Detail = () => {
   const menuRef = useRef(null)
   const titleRef = useRef(null)
   const [titUpdate, setTitUpdate]= useState(false)
-  // const [title, setTitle] = useState(' ')
-  // const [description, setDescription] = useState(' ')
-  // console.log(user.username)
+
   const [{title,description}, setState] = useState({
     title: ' ',
     description: ' '
   })
   const [isOpen, setIsOpen] = useState(false);
   const [warn, setWarning] = useState(false);
-  // console.log(answerdetail)
-  // console.log(typeof answerdetail)
 
-  // const urlHardcoded = `/answers/179`;
 const urlVariable = `/answers/${answerdetail}`;
 const urlUpdatequestion =`/questions/update/${answerdetail}`
 const urltitDescription =`/questions/titdescription/${answerdetail}`
 const urldeleteQuestion=`/questions/delete/${answerdetail}`
-// console.log(urlHardcoded === urlVariable);1
+
 
 
 const GoToQuestionPage = () =>{
@@ -59,7 +54,7 @@ const displayMenu = () =>{
     setIsOpen(!isOpen)
 }
  
-// console.log(title, description)
+
 async function UpdateQUestion(e){
 
     e.preventDefault()
@@ -83,7 +78,7 @@ async function UpdateQUestion(e){
     setTimeout(() => { window.location.reload(); }, 2000)
 
 } catch (error) {
-  // console.log('smtg went wrong')
+
   
     if(description ==''){
                  ansRef.current.placeholder=error.response.data.msg;
@@ -150,7 +145,7 @@ async function PostAnswer(e) {
  }
 
   }
-  // console.log(answer)
+
 
   async function fetchTitleandDescription(){
             
@@ -161,11 +156,10 @@ async function PostAnswer(e) {
               Authorization:'Bearer '+ token
               }
          })
-           //  console.log(response.data[0])
+
             
             setTitleandDescription(response.data[0])
-            // setDescription(response.data[0]?.description)
-            // setTitle(response.data[0]?.title)
+
 
             setState({
               title:response.data[0]?.title,
@@ -187,7 +181,7 @@ async function PostAnswer(e) {
                Authorization:'Bearer '+ token
                }
           })
-            //  console.log(response.data[0])
+
             setGetAnswer(response.data)
           }
           catch (error) {

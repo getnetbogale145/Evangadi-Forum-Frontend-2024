@@ -5,10 +5,8 @@ import SignUp from "./SignUp";
 import { SignContext } from "../State/State";
 import Reset from "./Reset";
 import Updatepass from "./UpdatePass";
-// import  {Navigate}  from 'react-router-dom'
 
 const Auth = () => {
-  // const [signState, setSignState]= useState(false)
   const [{ signstate }, dispatch] = useContext(SignContext);
 
   return (

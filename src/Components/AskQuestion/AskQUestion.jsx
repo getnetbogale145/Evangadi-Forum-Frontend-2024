@@ -7,7 +7,7 @@ import axios from "../../Utility/axios";
 import { DNA } from "react-loader-spinner";
 import { InfinitySpin } from "react-loader-spinner";
 import { motion } from "framer-motion";
-import { IoCheckmarkCircleOutline } from "react-icons/io5"; // Import your preferred icon
+import { IoCheckmarkCircleOutline } from "react-icons/io5"; 
 
 function AskQuestion() {
   const navigate = useNavigate();
