@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:5500/api",
+  baseURL: "https://github.com/getnetbogale145/Evangadi-Forum-Backend-2024",
 });
 
 export default instance;
