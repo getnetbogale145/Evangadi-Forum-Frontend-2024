@@ -69,6 +69,9 @@ import Detail from "./Components/Details/Detail";
 import { AnimatePresence } from "framer-motion";
 import NotFound from "./Pages/NotFound/NotFound";
 import UpdatePass from "./Components/Authentication/UpdatePass";
+import SignIn from "./Components/Authentication/SignIn";
+import SignUp from "./Components/Authentication/SignUp";
+import Reset from "./Components/Authentication/Reset";
 
 export const AppState = createContext();
 
@@ -110,6 +113,10 @@ function Gateway() {
           <Route path="/home" element={<Home />} />
           <Route path="/question" element={<AskQuestion />} />
           <Route path="/home/:answerdetail" element={<Detail />} />
+          <Route path="/login" element={<SignIn />} />
+          <Route path="/register" element={<SignUp />} />
+          <Route path="/forgot-password" element={<Reset />} />
+          <Route path="/reset/update" element={<UpdatePass />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>

@@ -162,45 +162,20 @@
 
 
 // routing
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
 import AuthStyle from "./classes.module.css";
 import { SignContext } from "../State/State";
-import { stateType } from "../../Utility/reducer";
-import axios from "../../Utility/axios";
 import { useNavigate, Link } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
+import axios from "../../Utility/axios";
 
 function SignIn() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [process, setProcess] = useState(false);
-  const [{ signstate }, dispatch] = useContext(SignContext);
   const email = useRef(null);
   const password = useRef(null);
   const [errMessage, setErrorMessage] = useState(false);
   const navigate = useNavigate();
-
-  const handleSignState = () => {
-    dispatch({
-      type: stateType.SIGN_UP,
-    });
-  };
-
-  const handleRESET = () => {
-    dispatch({
-      type: stateType.RESET,
-    });
-  };
-
-  const [isAnimating, setIsAnimating] = useState(true);
-
-  useEffect(() => {
-    // Remove the animation class after the animation duration
-    const timer = setTimeout(() => {
-      setIsAnimating(false);
-    }, 1000); // 1000ms = 1s, match this duration with your animation duration
-
-    return () => clearTimeout(timer);
-  }, []);
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -226,8 +201,6 @@ function SignIn() {
         password: passVal,
       });
 
-      console.log('Login response data:', data);
-
       localStorage.setItem("token", data.token);
       setTimeout(() => {
         navigate("/home");
@@ -242,66 +215,63 @@ function SignIn() {
 
   return (
     <div className={AuthStyle.form_container}>
-      <div className={`${isAnimating ? AuthStyle.slidein : ""}`}>
-        <form action="" onSubmit={handleSubmit}>
-          <div className={AuthStyle.Atitle}>
-            <p>Log in to your Account</p>
-            <p>
-              Don't have an account?{" "}
-              <Link to="/register" className={AuthStyle.link}>Create a new account</Link>
-            </p>
+      <form action="" onSubmit={handleSubmit}>
+        <div className={AuthStyle.Atitle}>
+          <p>Log in to your Account</p>
+          <p>
+            Don't have an account? <Link to="/register">Create a new account</Link>
+          </p>
+        </div>
+
+        {errMessage && (
+          <div className={AuthStyle.error_message}>
+            You entered the wrong username or password.
           </div>
+        )}
 
-          {errMessage && (
-            <div className={AuthStyle.error_message}>
-              You entered the wrong username or password.
-            </div>
-          )}
+        <div>
+          <input type="email" name="email" ref={email} placeholder="Email" />
+        </div>
 
-          <div>
-            <input type="email" name="email" ref={email} placeholder="Email" />
+        <div className={AuthStyle.password_toggle_container}>
+          <input
+            type={passwordVisible ? "text" : "password"}
+            placeholder="Password"
+            ref={password}
+            name="password"
+          />
+
+          <span
+            className={`fa ${passwordVisible ? "fa-eye" : "fa-eye-slash"}  ${
+              AuthStyle.pwd_toggle
+            }`}
+            onClick={togglePasswordVisibility}
+            aria-hidden="true"
+          ></span>
+        </div>
+
+        {process && (
+          <ThreeDots
+            visible={true}
+            height="40"
+            width="40"
+            color="#516CF0"
+            radius="6"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClass={AuthStyle.ThreeDotsCenter}
+          />
+        )}
+
+        <div className={AuthStyle.btn_container}>
+          <button type="submit">Submit</button>
+          <div className={AuthStyle.forgot_outer_container}>
+            <Link to="/forgot-password" className={AuthStyle.forgot}>
+              Forgot Password?
+            </Link>
           </div>
-
-          <div className={AuthStyle.password_toggle_container}>
-            <input
-              type={passwordVisible ? "text" : "password"}
-              placeholder="Password"
-              ref={password}
-              name="password"
-            />
-
-            <span
-              className={`fa ${passwordVisible ? "fa-eye" : "fa-eye-slash"}  ${
-                AuthStyle.pwd_toggle
-              }`}
-              onClick={togglePasswordVisibility}
-              aria-hidden="true"
-            ></span>
-          </div>
-
-          {process && (
-            <ThreeDots
-              visible={true}
-              height="40"
-              width="40"
-              color="#516CF0"
-              radius="6"
-              ariaLabel="three-dots-loading"
-              wrapperStyle={{}}
-              wrapperClass={AuthStyle.ThreeDotsCenter}
-            />
-          )}
-
-          <div className={AuthStyle.btn_container}>
-            <button type="submit">Submit</button>
-            <div className={AuthStyle.forgot_outer_container}>
-              <Link to="/reset-password" className={AuthStyle.forgot}>
-                Forgot Password?
-              </Link>
-            </div>
-          </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 }
