@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://evangadi-forum-backend-2024-4.onrender.com",
+  baseURL: "https://github.com/getnetbogale145/Evangadi-Forum-Backend-2024",
 });
 
 export default instance;
